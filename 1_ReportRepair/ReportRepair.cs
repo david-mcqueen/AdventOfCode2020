@@ -23,6 +23,7 @@ namespace _1_ReportRepair
                 var newCollection = collection.ToList();
                 newCollection.RemoveAt(i);
                 var answers = Recursive(newCollection, new List<long>() { item });
+
                 if (answers.Count == depth)
                 {
                     return answers;
@@ -32,7 +33,7 @@ namespace _1_ReportRepair
             return new List<long>();
         }
 
-        public List<long> Recursive(List<long> collection, List<long> answer)
+        private List<long> Recursive(List<long> collection, List<long> answer)
         {
 
             if (answer.Count == depth)
@@ -40,22 +41,19 @@ namespace _1_ReportRepair
                 return answer;
             }
 
-            for (int i = 0; i < collection.Count; i++)
+            foreach (var item in collection)
             {
-                var item = collection[i];
                 if (answer.Sum() + item > target)
                     continue;
 
                 var newAnswer = answer.ToList();
                 newAnswer.Add(item);
-
+                
                 if (newAnswer.Sum() == target)
-                {
                     return newAnswer;
-                }
-
+                
                 var newCollection = collection.ToList();
-                newCollection.RemoveAt(i);
+                newCollection.Remove(item);
 
                 var recAns = Recursive(newCollection, newAnswer);
 
@@ -64,6 +62,7 @@ namespace _1_ReportRepair
 
                 continue;
             }
+
 
             return answer;
         }

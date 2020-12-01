@@ -4,8 +4,16 @@ using System.Linq;
 
 namespace _1_ReportRepair
 {
-    public class Class1
+    public class ReportRepair
     {
+        private int depth;
+        private long target;
+
+        public ReportRepair(long target, int depth)
+        {
+            this.target = target;
+            this.depth = depth;
+        }
 
         public List<long> Process(List<long> collection)
         {
@@ -15,7 +23,7 @@ namespace _1_ReportRepair
                 var newCollection = collection.ToList();
                 newCollection.RemoveAt(i);
                 var answers = Recursive(newCollection, new List<long>() { item });
-                if (answers.Count == 3)
+                if (answers.Count == depth)
                 {
                     return answers;
                 }
@@ -27,7 +35,7 @@ namespace _1_ReportRepair
         public List<long> Recursive(List<long> collection, List<long> answer)
         {
 
-            if (answer.Count == 3)
+            if (answer.Count == depth)
             {
                 return answer;
             }
@@ -35,13 +43,13 @@ namespace _1_ReportRepair
             for (int i = 0; i < collection.Count; i++)
             {
                 var item = collection[i];
-                if (answer.Sum() + item > 2020)
+                if (answer.Sum() + item > target)
                     continue;
 
                 var newAnswer = answer.ToList();
                 newAnswer.Add(item);
 
-                if (newAnswer.Sum() == 2020)
+                if (newAnswer.Sum() == target)
                 {
                     return newAnswer;
                 }
@@ -51,7 +59,7 @@ namespace _1_ReportRepair
 
                 var recAns = Recursive(newCollection, newAnswer);
 
-                if (recAns.Sum() == 2020)
+                if (recAns.Sum() == target)
                     return recAns;
 
                 continue;

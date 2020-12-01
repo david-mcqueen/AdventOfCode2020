@@ -7,15 +7,33 @@ namespace _1_ReportRepairTest
 {
     public class Tests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
+        [TestCase(2)]
+        [TestCase(3)]
 
         [Test]
-        public void Test1()
+        public void GetsNumbersWhichAddToTarget(int depth)
         {
-            var data = new List<long>()
+            var c = new ReportRepair(2020, depth);
+
+            var answers = c.Process(data);
+
+            Assert.AreEqual(2020, answers.Sum());
+        }
+
+        [TestCase(2, 876459)]
+        [TestCase(3, 116168640)]
+        public void GetsTotalOfMultiplied_Depth2(int depth, long expected) 
+        {
+            var c = new ReportRepair(2020, depth);
+
+            var answers = c.Process(data);
+
+            var total = answers.Aggregate((a, x) => a * x);
+
+            Assert.AreEqual(expected, total);
+        }
+
+        private static List<long> data = new List<long>()
             {
                 1228,
 1584,
@@ -218,11 +236,6 @@ namespace _1_ReportRepairTest
 1979,
 1876
             };
-            var c = new Class1();
-
-            var answers = c.Process(data);
-            Assert.AreEqual(2020, answers.Sum());
-        }
     }
 }
 

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace _1_ReportRepairTest
 {
-    public class Tests
+    public class RepairReportTest
     {
         [TestCase(2)]
         [TestCase(3)]

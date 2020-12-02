@@ -1,10 +1,25 @@
 ﻿using System;
 using System.Linq;
+using Utilities;
 
 namespace _2_Passwords
 {
     public class PasswordValidator
     {
+        public int GetNumberOfValidPasswordsInFile(string filePath)
+        {
+            var inputs = FileReader.ReadFileLines(filePath);
+            int validPasswords = 0;
+
+            foreach (var item in inputs)
+            {
+                if (IsPasswordValid(item))
+                    validPasswords++;
+            }
+
+            return validPasswords;
+        }
+
         public bool IsPasswordValid(string input)
         {
             var password = getPasswordPart(input);

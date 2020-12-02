@@ -13,11 +13,21 @@ namespace _2_PasswordsTest
         [TestCase("1-3 a: abcde", true)]
         [TestCase("1-3 b: cdefg", false)]
         [TestCase("2-9 c: ccccccccc", true)]
-        public void Test1(string input, bool isValid)
+        public void GivenPasswordValidator_WhenPasswordIsProvided_ThenCorrectAnswerIsReturned(string input, bool isValid)
         {
             var pwdValidator = new PasswordValidator();
 
             Assert.AreEqual(isValid, pwdValidator.IsPasswordValid(input));
+        }
+
+        [Test]
+        public void GivenBulkPasswordValidator_WhenBulkPasswordsAreProvided_ThenCountOfCorrectPasswordsIsProvided()
+        {
+            var pwdValidator = new PasswordValidator();
+
+            var count = pwdValidator.GetNumberOfValidPasswordsInFile("input.txt");
+
+            Assert.AreEqual(580, count);
         }
     }
 }

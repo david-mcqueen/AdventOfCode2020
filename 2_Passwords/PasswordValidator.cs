@@ -13,17 +13,24 @@ namespace _2_Passwords
 
             foreach (var item in inputs)
             {
-                if (IsPasswordValid(item))
+                
+                if (ValidatePassword(item))
                     validPasswords++;
             }
 
             return validPasswords;
         }
 
-        public bool IsPasswordValid(string input)
+        public bool ValidatePassword(string input)
         {
             var password = getPasswordPart(input);
             var policy = getPasswordPolicy(input);
+            return IsPasswordValid(password, policy);
+        }
+
+        public bool IsPasswordValid(string password, PasswordPolicy policy)
+        {
+            
 
             var occurences = password.Count(c => c.ToString().Equals(policy.Character));
 

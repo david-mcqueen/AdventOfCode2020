@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _2_Passwords
 {
-    class PasswordPolicy
+    public class PasswordPolicy
     {
         public string Character  { get; set; }
 

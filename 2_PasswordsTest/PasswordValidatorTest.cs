@@ -17,7 +17,7 @@ namespace _2_PasswordsTest
         {
             var pwdValidator = new PasswordValidator();
 
-            Assert.AreEqual(isValid, pwdValidator.IsPasswordValid(input));
+            Assert.AreEqual(isValid, pwdValidator.ValidatePassword(input));
         }
 
         [Test]

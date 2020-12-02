@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _2_Passwords.Validators;
+using System;
 using System.Linq;
 using Utilities;
 
@@ -6,6 +7,13 @@ namespace _2_Passwords
 {
     public class PasswordValidator
     {
+        private readonly IValidator validator;
+
+        public PasswordValidator(IValidator validator)
+        {
+            this.validator = validator;
+        }
+
         public int GetNumberOfValidPasswordsInFile(string filePath)
         {
             var inputs = FileReader.ReadFileLines(filePath);
@@ -25,18 +33,8 @@ namespace _2_Passwords
         {
             var password = getPasswordPart(input);
             var policy = getPasswordPolicy(input);
-            return IsPasswordValid(password, policy);
-        }
-
-        public bool IsPasswordValid(string password, PasswordPolicy policy)
-        {
-            
-
-            var occurences = password.Count(c => c.ToString().Equals(policy.Character));
-
-
-            return occurences >= policy.MinOccurance && occurences <= policy.MaxOccurance;
-        }
+            return validator.IsPasswordValid(password.Trim(), policy);
+        }        
 
         private string getPasswordPart(string input)
         {

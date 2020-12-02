@@ -1,5 +1,6 @@
-[AdventOfCode](https://adventofcode.com/2020)
+[AdventOfCode 2020](https://adventofcode.com/2020)
 
 
-- [Day 1](./1_ReportRepair)
-- [Day 2](./2_Passwords)
+#### Days
+- [Day 1 - Report Repair](./1_ReportRepair)
+- [Day 2 - Passwords](./2_Passwords)

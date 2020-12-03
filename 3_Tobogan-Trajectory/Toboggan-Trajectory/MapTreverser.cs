@@ -5,22 +5,17 @@ namespace Toboggan_Trajectory
 {
     public class MapTreverser
     {
-        public MapTreverser()
-        {
-
-        }
-
-        public int TraverseSlope(List<string> slope)
+        public int TraverseSlope(List<string> slope, int latRate, int longRate)
         {
             var countOfTrees = 0;
-            var currentLat = 0;
+            var currentLong = 0;
 
-            for (int i = 0; i < slope.Count; i++)
+            for (int i = 0; i < slope.Count; i+= latRate)
             {
-                if (IsTreeAtLatitude(slope[i], currentLat))
+                if (IsTreeAtLatitude(slope[i], currentLong))
                     countOfTrees++;
 
-                currentLat += 3;
+                currentLong += longRate;
             }
             return countOfTrees;
         }

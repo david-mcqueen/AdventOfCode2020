@@ -4,4 +4,4 @@
 #### Days
 - [Day 1 - Report Repair](./1_ReportRepair)
 - [Day 2 - Passwords](./2_Passwords)
-- [Day 3 - Tomoggan](./3_Tobogan-Trajectory)
+- [Day 3 - Toboggan](./3_Tobogan-Trajectory)
